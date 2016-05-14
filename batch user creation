@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while [[ $# > 0 ]]
+do
+  case "$1" in
+  -f|-F) for i in `more user_list `
+	 do
+	 echo $i
+	 awk 'BEGIN{FS=",;"; OFS="\n"}{print $1, $NF}' user_list
+#awk -F',' useradd $i
+	 done
+	 ;;
+  *) break ;;
+  esac
+  shift
+done
